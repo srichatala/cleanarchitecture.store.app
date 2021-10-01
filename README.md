@@ -1,2 +1,2 @@
-# cleanarchitecture.store.app
-Store App using Clean Architecture using .Net Core 5.0
+# Clean Architecture Store Application
+Store App developed using Clean Architecture using .Net Core 5.0
