@@ -1,10 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace StoreApi.Controllers
 {
@@ -12,6 +9,9 @@ namespace StoreApi.Controllers
     [ApiController]
     public class ApiBaseController : ControllerBase
     {
-        private readonly IMediator _mediator;
+        private IMediator _mediator;
+
+        protected IMediator Mediator => _mediator ??= HttpContext.RequestServices.GetService<IMediator>();
+
     }
 }
