@@ -23,7 +23,16 @@ namespace Store.Application.Shops.Handlers
 
         public async Task<ShopResponse> Handle(CreateShopCommand req, CancellationToken cancellationToken)
         {
-            var shopEntity = _mapper.Map<ShopEntity>(req);
+            var shopEntity = new ShopEntity {
+                ShopName = req.ShopName,
+                Phone = req.Phone,
+                Email = req.Email,
+                Street = req.Street,
+                City = req.City,
+                State = req.State,
+                PostalCode = req.PostalCode,
+                CreatedDate = req.CreatedDate
+            }; //_mapper.Map<ShopEntity>(req);
             if (shopEntity is null)
             {
                 throw new NotFoundException(nameof(ShopEntity), req);

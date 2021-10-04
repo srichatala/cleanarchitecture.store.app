@@ -1,6 +1,7 @@
 ﻿using FluentAssertions;
 using NUnit.Framework;
 using Store.Application.Shops.Commands;
+using Store.Application.Shops.Queries;
 using Store.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -8,16 +9,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Store.Application.Integration.Test.ShopTests.Commands
+namespace Store.Application.Integration.Test.ShopTests.Queries
 {
     using static Testing;
 
-    public class CreateShopTests : TestBase
+    public class GetShopsListTests : TestBase
     {
         [Test]
-        public async Task ShouldCreateTodoItem()
+        public async Task ShouldReturnAllLists()
         {
-            var command = new CreateShopCommand
+            await AddAsync(new ShopEntity
             {
                 ShopName = "Test Shop",
                 Phone = "111-123-1234",
@@ -27,11 +28,11 @@ namespace Store.Application.Integration.Test.ShopTests.Commands
                 State = "ON",
                 PostalCode = "F1E 1D6",
                 CreatedDate = DateTime.Now
-            };
+            });
 
-            var item = await SendAsync(command);
+            var list  =  await SendAsync(new GetAllShopQuery());
 
-            item.Should().NotBeNull();
+            list.Items.Should().HaveCount(1);
         }
     }
 }
