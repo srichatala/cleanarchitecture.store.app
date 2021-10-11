@@ -1,2 +1,15 @@
 # Clean Architecture Store Application
-Store App developed using Clean Architecture using .Net Core 5.0
+This application developed with following technologies.
+
+##### Asp.Net Core 5.0 - API
+##### gRPC - Server
+##### MediatR
+##### AutoMapper
+##### Microsoft EntityFramework Core
+##### Swagger
+##### nUnit
+
+
+
+
+
